@@ -6,6 +6,7 @@
     <title>ИИ маркетолог | Стабильные продажи 300-500к</title>
     <meta name="description" content="Готовый ИИ маркетолог и алгоритм действий для выхода на стабильные продажи 300-500к в месяц">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,10 +15,10 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #fafafa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #FDF6F0;
             color: #1a1a1a;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
@@ -55,38 +56,128 @@
             }
         }
 
-        .animate {
-            animation: fadeInUp 0.8s ease-out forwards;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .animate { animation: fadeInUp 0.8s ease-out forwards; }
         .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
         .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
-        .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
 
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        /* Star Badge */
+        .star-badge {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 120px;
+            background: #FF6B35;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
             color: white;
-            padding: 18px 48px;
+            text-align: center;
+            line-height: 1.2;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .star-badge span {
+            display: block;
+            max-width: 70px;
+        }
+
+        /* Paper Sheet with Clip */
+        .paper-sheet {
+            background: white;
+            border: 3px solid #1a1a1a;
+            border-radius: 8px;
+            position: relative;
+            padding: 60px 50px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+        }
+
+        .paper-sheet::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 50px;
+            background: #FF6B8A;
+            border: 3px solid #1a1a1a;
+            border-radius: 4px;
+            z-index: 5;
+        }
+
+        .paper-sheet::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: #FF6B8A;
+            border: 3px solid #1a1a1a;
+            border-radius: 50%;
+            z-index: 6;
+        }
+
+        /* Pink accent line */
+        .pink-accent {
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            right: 20px;
+            height: 30px;
+            background: #FF6B8A;
+            border: 3px solid #1a1a1a;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .pink-accent::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                #1a1a1a,
+                #1a1a1a 4px,
+                transparent 4px,
+                transparent 12px
+            );
+            transform: translateY(-50%);
+        }
+
+        /* Orange Badge */
+        .orange-badge {
+            display: inline-block;
+            background: #FF6B35;
+            color: #1a1a1a;
+            font-weight: 800;
             font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 3px solid #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Hero Section */
@@ -95,52 +186,126 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 80px 0;
-            background: linear-gradient(180deg, #fafafa 0%, #f0f0ff 100%);
+            padding: 40px 0;
+            background: #FDF6F0;
         }
 
-        .hero h1 {
-            font-size: clamp(32px, 6vw, 56px);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+        .hero-wrapper {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
         }
 
-        .hero p {
-            font-size: clamp(18px, 2.5vw, 24px);
-            color: #4a4a4a;
-            max-width: 800px;
-            margin: 0 auto 40px;
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-pre-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #FF6B35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #333;
+            max-width: 450px;
+            margin-bottom: 30px;
             line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Money Character SVG */
+        .money-character {
+            width: 200px;
+            height: 280px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 3px solid #1a1a1a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 4px 4px 0 #1a1a1a;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #1a1a1a;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #1a1a1a;
         }
 
         /* Target Section */
         .target {
             padding: 100px 0;
             background: white;
+            border-top: 3px solid #1a1a1a;
+            border-bottom: 3px solid #1a1a1a;
         }
 
         .section-title {
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 700;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
             text-align: center;
             margin-bottom: 60px;
+            text-transform: uppercase;
         }
 
         .target-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 30px;
         }
 
         .target-card {
-            background: #f8f8f8;
+            background: #FDF6F0;
             padding: 40px 30px;
             border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #1a1a1a;
+            transition: all 0.3s ease;
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
         }
@@ -150,30 +315,32 @@
         .target-card:nth-child(3) { animation-delay: 0.3s; }
 
         .target-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 8px 8px 0 #1a1a1a;
         }
 
         .target-icon {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 20px;
         }
 
         .target-card h3 {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 800;
             margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .target-card p {
-            color: #666;
+            color: #444;
             font-size: 16px;
+            line-height: 1.5;
         }
 
         /* How It Works Section */
         .how-it-works {
             padding: 100px 0;
-            background: #fafafa;
+            background: #FDF6F0;
         }
 
         .steps {
@@ -185,11 +352,11 @@
 
         .step {
             text-align: center;
-            padding: 40px 24px;
+            padding: 40px 20px;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            border: 3px solid #1a1a1a;
+            transition: all 0.3s ease;
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
         }
@@ -200,64 +367,102 @@
         .step:nth-child(4) { animation-delay: 0.4s; }
 
         .step:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) rotate(1deg);
+            box-shadow: 6px 6px 0 #1a1a1a;
         }
 
         .step-number {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            width: 60px;
+            height: 60px;
+            background: #FF6B35;
             color: white;
+            border: 3px solid #1a1a1a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 900;
             margin: 0 auto 24px;
+            box-shadow: 3px 3px 0 #1a1a1a;
         }
 
         .step h4 {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 800;
             margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .step p {
-            color: #666;
+            color: #444;
             font-size: 15px;
+            line-height: 1.5;
         }
 
         /* Number Section */
         .numbers {
             padding: 120px 0;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: #FF6B8A;
             text-align: center;
             color: white;
+            border-top: 3px solid #1a1a1a;
+            border-bottom: 3px solid #1a1a1a;
+            position: relative;
+        }
+
+        .numbers::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                white,
+                white 8px,
+                transparent 8px,
+                transparent 16px
+            );
+        }
+
+        .numbers::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                white,
+                white 8px,
+                transparent 8px,
+                transparent 16px
+            );
         }
 
         .numbers-label {
-            font-size: 18px;
-            font-weight: 500;
-            opacity: 0.9;
-            margin-bottom: 16px;
-            animation: fadeIn 1s ease-out forwards;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         .numbers-value {
-            font-size: clamp(48px, 10vw, 96px);
-            font-weight: 800;
+            font-size: clamp(56px, 12vw, 120px);
+            font-weight: 900;
             line-height: 1;
-            margin-bottom: 16px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.2);
-            animation: scaleIn 1s ease-out forwards;
+            text-shadow: 4px 4px 0 #1a1a1a;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .numbers-desc {
-            font-size: 20px;
-            opacity: 0.9;
-            animation: fadeIn 1s ease-out 0.3s forwards;
-            opacity: 0;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 20px;
         }
 
         /* CTA Section */
@@ -268,21 +473,38 @@
         }
 
         .cta h2 {
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 700;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
             margin-bottom: 40px;
+            text-transform: uppercase;
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .cta .btn {
-            font-size: 20px;
-            padding: 22px 56px;
+            font-size: 22px;
+            padding: 24px 60px;
             animation: fadeInUp 0.8s ease-out 0.2s forwards;
             opacity: 0;
         }
 
         /* Responsive */
         @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-cta {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .star-badge {
+                left: 50%;
+                top: -60px;
+                transform: translateX(-50%);
+            }
+
             .target-grid {
                 grid-template-columns: 1fr;
                 max-width: 500px;
@@ -291,6 +513,11 @@
 
             .steps {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .money-character {
+                width: 150px;
+                height: 210px;
             }
         }
 
@@ -301,12 +528,18 @@
                 margin: 40px auto 0;
             }
 
-            .hero {
-                padding: 60px 0;
+            .paper-sheet {
+                padding: 50px 30px;
             }
 
-            .target, .how-it-works, .numbers, .cta {
-                padding: 60px 0;
+            .hero-pre-title {
+                font-size: 18px;
+            }
+
+            .star-badge {
+                width: 100px;
+                height: 100px;
+                font-size: 10px;
             }
         }
     </style>
@@ -314,14 +547,68 @@
 <body>
 
     <!-- Analytics placeholder - insert tracking code here -->
-    <!-- Google Analytics, Yandex.Metrika, Facebook Pixel, etc. -->
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="animate">БЛОГ С 0 ДО СТАБИЛЬНЫХ ПРОДАЖ</h1>
-            <p class="animate animate-delay-1">Получи готового ИИ маркетолога и алгоритм действий от позиционирования до стабильных продаж на 300–500к в месяц через ИИ</p>
-            <a href="#" class="btn animate animate-delay-2">Запустить</a>
+            <div class="hero-wrapper">
+                <div class="paper-sheet">
+                    <div class="star-badge"><span>Анкета предзаписи на программу Никиты Корытина</span></div>
+                    <div class="pink-accent"></div>
+                    <div class="hero-inner">
+                        <div class="hero-content">
+                            <div class="hero-pre-title animate">БЛОГ С 0 ДО</div>
+                            <h1 class="hero-title animate">
+                                <span>СТАБИЛЬНЫХ</span>
+                                <span>ПРОДАЖ</span>
+                            </h1>
+                            <p class="hero-description animate animate-delay-1">
+                                Получи готового ИИ маркетолога и алгоритм действий от позиционирования до стабильных продаж на 300 – 500к в месяц через ИИ
+                            </p>
+                            <div class="hero-cta animate animate-delay-2">
+                                <span class="orange-badge">ЧЕРЕЗ ИИ</span>
+                            </div>
+                        </div>
+                        <svg class="money-character animate animate-delay-3" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Money stack body -->
+                            <rect x="40" y="60" width="120" height="140" rx="8" fill="#C4D977" stroke="#1a1a1a" stroke-width="3"/>
+                            <rect x="45" y="55" width="120" height="140" rx="8" fill="#D4E987" stroke="#1a1a1a" stroke-width="3"/>
+                            <rect x="50" y="50" width="120" height="140" rx="8" fill="#E4F997" stroke="#1a1a1a" stroke-width="3"/>
+                            <!-- Dollar signs -->
+                            <text x="110" y="110" font-size="28" font-weight="bold" fill="#1a1a1a" text-anchor="middle">$</text>
+                            <text x="110" y="150" font-size="36" font-weight="bold" fill="#1a1a1a" text-anchor="middle">$</text>
+                            <text x="110" y="190" font-size="28" font-weight="bold" fill="#1a1a1a" text-anchor="middle">$</text>
+                            <!-- Left arm -->
+                            <path d="M50 120 Q30 140 35 160" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <circle cx="35" cy="165" r="8" fill="#C4D977" stroke="#1a1a1a" stroke-width="3"/>
+                            <!-- Right arm with thumbs up -->
+                            <path d="M170 120 Q185 100 175 85" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <circle cx="175" cy="80" r="8" fill="#C4D977" stroke="#1a1a1a" stroke-width="3"/>
+                            <ellipse cx="175" cy="70" rx="6" ry="12" fill="#C4D977" stroke="#1a1a1a" stroke-width="3"/>
+                            <!-- Legs -->
+                            <path d="M70 200 L70 240" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M130 200 L130 240" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <!-- Shoes -->
+                            <ellipse cx="65" cy="250" rx="20" ry="12" fill="#4A7C59" stroke="#1a1a1a" stroke-width="3"/>
+                            <ellipse cx="135" cy="250" rx="20" ry="12" fill="#4A7C59" stroke="#1a1a1a" stroke-width="3"/>
+                            <!-- Eyes -->
+                            <ellipse cx="95" cy="90" rx="12" ry="15" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+                            <ellipse cx="125" cy="90" rx="12" ry="15" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+                            <circle cx="95" cy="88" r="5" fill="#1a1a1a"/>
+                            <circle cx="125" cy="88" r="5" fill="#1a1a1a"/>
+                            <!-- Smile -->
+                            <path d="M100 105 Q110 115 120 105" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <!-- Sparkles -->
+                            <text x="165" y="60" font-size="20" fill="#FF6B35">✦</text>
+                            <text x="30" y="80" font-size="16" fill="#FF6B35">✦</text>
+                            <text x="20" y="180" font-size="14" fill="#FF6B35">✦</text>
+                        </svg>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn animate animate-delay-2">Запустить</a>
+                </div>
+            </div>
         </div>
     </section>
 
