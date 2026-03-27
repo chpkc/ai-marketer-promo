@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИИ маркетолог | Стабильные продажи 300-500к</title>
+    <meta name="description" content="Готовый ИИ маркетолог и алгоритм действий для выхода на стабильные продажи 300-500к в месяц">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0ff 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: #4a4a4a;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+
+        /* Target Section */
+        .target {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .target-card {
+            background: #f8f8f8;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .target-card:nth-child(1) { animation-delay: 0.1s; }
+        .target-card:nth-child(2) { animation-delay: 0.2s; }
+        .target-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .target-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .target-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .target-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .target-card p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background: #fafafa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 40px 24px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+
+        .step:hover {
+            transform: translateY(-6px);
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .step h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Number Section */
+        .numbers {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .numbers-label {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .numbers-value {
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+            animation: scaleIn 1s ease-out forwards;
+        }
+
+        .numbers-desc {
+            font-size: 20px;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .cta .btn {
+            font-size: 20px;
+            padding: 22px 56px;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .target-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .steps {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 40px auto 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .target, .how-it-works, .numbers, .cta {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Analytics placeholder - insert tracking code here -->
+    <!-- Google Analytics, Yandex.Metrika, Facebook Pixel, etc. -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate">БЛОГ С 0 ДО СТАБИЛЬНЫХ ПРОДАЖ</h1>
+            <p class="animate animate-delay-1">Получи готового ИИ маркетолога и алгоритм действий от позиционирования до стабильных продаж на 300–500к в месяц через ИИ</p>
+            <a href="#" class="btn animate animate-delay-2">Запустить</a>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="target">
+        <div class="container">
+            <h2 class="section-title animate">Кому подходит</h2>
+            <div class="target-grid">
+                <div class="target-card">
+                    <div class="target-icon">📝</div>
+                    <h3>Эксперты и специалисты</h3>
+                    <p>Которые хотят масштабировать экспертность через системный контент и автоматизацию</p>
+                </div>
+                <div class="target-card">
+                    <div class="target-icon">🚀</div>
+                    <h3>Предприниматели</h3>
+                    <p>Которые ищут рабочую модель привлечения клиентов без больших вложений в рекламу</p>
+                </div>
+                <div class="target-card">
+                    <div class="target-icon">💼</div>
+                    <h3>Консультанты и коучи</h3>
+                    <p>Которым нужен предсказуемый поток заявок и стабильный доход каждый месяц</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title animate">Как работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Анализ</h4>
+                    <p>Изучаем вашу нишу, аудиторию и конкурентов для создания уникального позиционирования</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Настройка ИИ</h4>
+                    <p>Настраиваем ИИ-маркетолога под ваши задачи и создаём персонализированные промпты</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Генерация контента</h4>
+                    <p>Создаём систему постоянного производства качественного контента с помощью ИИ</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Запуск продаж</h4>
+                    <p>Запускаем воронку продаж и выходим на стабильный поток клиентов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers Section -->
+    <section class="numbers">
+        <div class="container">
+            <div class="numbers-label">Стабильный доход</div>
+            <div class="numbers-value">300–500к</div>
+            <div class="numbers-desc">в месяц через системный подход и ИИ-автоматизацию</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Готов выйти на стабильные продажи?</h2>
+            <a href="#" class="btn">Хочу результат</a>
+        </div>
+    </section>
+
+</body>
+</html>
