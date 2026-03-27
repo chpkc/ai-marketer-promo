@@ -338,6 +338,85 @@
             opacity: 0;
         }
 
+        /* Contact Form Section */
+        .contact-form {
+            padding: 100px 0;
+            background: #FDF6F0;
+            border-top: 3px solid #1a1a1a;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .contact-form .subtitle {
+            font-size: 18px;
+            color: #444;
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 3px solid #1a1a1a;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            background: white;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .form-container .btn {
+            width: 100%;
+            font-size: 18px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero-image {
@@ -352,6 +431,10 @@
 
             .steps {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-container {
+                margin: 0 20px;
             }
         }
 
@@ -368,6 +451,15 @@
 
             .hero-btn-wrapper {
                 margin-top: 20px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+                margin: 0 15px;
+            }
+
+            .contact-form {
+                padding: 60px 0;
             }
         }
     </style>
@@ -450,9 +542,55 @@
     <section class="cta">
         <div class="container">
             <h2>Готов выйти на стабильные продажи?</h2>
-            <a href="#" class="btn">Хочу результат</a>
+            <a href="#contact-form" class="btn">Хочу результат</a>
         </div>
     </section>
+
+    <!-- Contact Form Section -->
+    <!-- BACKEND INTEGRATION NOTE: Connect form submission to email service (Formspree, EmailJS) or Telegram Bot API -->
+    <section class="contact-form" id="contact-form">
+        <div class="container">
+            <h2>Оставьте контакты и получите доступ</h2>
+            <p class="subtitle">Я пришлю вам подробный алгоритм и примеры настройки ИИ маркетолога</p>
+            <div class="form-container">
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Телефон или Telegram</label>
+                        <input type="text" id="contact" name="contact" placeholder="+7 (999) 999-99-99 или @username" required>
+                    </div>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submission handler - DEMO VERSION
+        // TODO: Replace with actual backend integration (Formspree, EmailJS, or Telegram Bot API)
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            
+            // Demo: Show success message
+            alert('Спасибо! Я свяжусь с вами в ближайшее время');
+            
+            // Reset form
+            this.reset();
+            
+            // BACKEND INTEGRATION EXAMPLE:
+            // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ name, contact })
+            // });
+        });
+    </script>
 
 </body>
 </html>
